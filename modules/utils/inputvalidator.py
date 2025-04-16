@@ -1,5 +1,6 @@
 import re
 
+
 class InputValidator():
     def validate_pattern_input(self, text: str, /) -> str | None:
         """
@@ -19,7 +20,6 @@ class InputValidator():
                 result = inp
             return result
 
-
     def is_valid_regex(self, pattern: str) -> bool:
         """
         Checks if a given RegEx pattern is valid.
@@ -35,7 +35,6 @@ class InputValidator():
             return True
         except re.error:
             return False
-
 
     def validate_int_with_exit_input(self, text: str, min_value: int, max_value: int, /) -> str:
         """
@@ -60,7 +59,6 @@ class InputValidator():
                 result = inp.strip()
             return result
 
-
     def validate_yesno_with_exit_input(self, text: str, /) -> str:
         """
         Asks the user for input using the given prompt text.
@@ -78,7 +76,6 @@ class InputValidator():
             if inp_chk in ("j", "ja", "n", "nein", "e", "exit"):
                 result = inp_chk
                 return result
-
 
     def validate_yesno_input(self, text: str, /) -> str:
         """

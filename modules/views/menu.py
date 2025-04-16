@@ -8,7 +8,6 @@ class Menu:
         """
         print("-" * 100)
 
-
     def print_menu_header(self):
         """
             Prints a menu header.
@@ -16,7 +15,6 @@ class Menu:
         self.print_separator()
         print(f"{'Buch-Id':<8}\tTitel und Autor")
         self.print_separator()
-
 
     def print_menu_entry(self, book_id: int, title: str, author: str, /):
         """
@@ -29,14 +27,12 @@ class Menu:
         """
         print(f"{book_id:<8}\t{title} (von {author})")
 
-
     def print_menu_footer(self):
         """
         Prints a menu footer.
         """
         print(f"{'(E)xit':<8}\tProgramm beenden")
         self.print_separator()
-
 
     def print_menu(self, book_list: list[dict[str, Any]], /):
         """
@@ -55,7 +51,6 @@ class Menu:
             print(f"{'':<8}\tKein Buch gefunden!")
         self.print_menu_footer()
 
-
     def print_statistics_header(self):
         """
         Prints a statistics header.
@@ -63,7 +58,6 @@ class Menu:
         self.print_separator()
         print("Buch Statistiken:")
         self.print_separator()
-
 
     def print_statistics_entry(self, book_statistics: dict[str, Any], /):
         """
@@ -77,7 +71,6 @@ class Menu:
             for key, value in translated_book_statistics.items():
                 print(f"{key:<20}{value}")
             self.print_separator()
-
 
     def get_statistics_entry_translations(self, book_statistics: dict[str, Any], /) -> dict[str, Any]:
         """
