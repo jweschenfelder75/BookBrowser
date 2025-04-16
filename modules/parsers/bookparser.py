@@ -35,7 +35,7 @@ class BookParser:
             print(f"Fehler, ein Ausnahmefehler ist aufgetreten: {e}")
 
 
-    def get_file_title_author_from_book(self, filepath: str, /) -> Tuple[str, str, str]:
+    def get_file_title_author_from_book(self, book_id: int, filepath: str, /) -> Book:
         """
         Fetches the title and author (sometimes translator) from a book.
 
@@ -58,7 +58,7 @@ class BookParser:
                         author = line.split("Translator:")[1].strip()
         except FileNotFoundError:
             print(f"Fehler: Die Datei '{filepath}' konnte nicht gelesen werden.")
-        return filepath, title, author
+        return Book(book_id, filepath, title, author)
 
 
     def read_file_and_count_lines(self, filepath: str, /) -> Tuple[str, int]:
@@ -148,8 +148,6 @@ class BookParser:
         book_id = 0
         for found_file in self.get_files_recursively(directory):
             book_id += 1
-            # TODO: Try to combine next to lines: get_file_title_author_from_book can return Book
-            file, title, author = self.get_file_title_author_from_book(found_file)
-            book = Book(book_id, file, title, author)
+            book = self.get_file_title_author_from_book(book_id, found_file)
             result.attach_book(book)
         return result
