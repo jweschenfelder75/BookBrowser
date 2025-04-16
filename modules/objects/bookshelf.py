@@ -18,5 +18,5 @@ class Bookshelf:
     def get_books(self) -> list[Book]:
         return self.books
 
-    def attach_books(self, book: Book, /):
+    def attach_book(self, book: Book, /):
         self.books = book
