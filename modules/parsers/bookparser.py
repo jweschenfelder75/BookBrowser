@@ -109,7 +109,7 @@ class BookParser:
             dict: book statistics (book id, book filepath, book title, book author, book line count, book space count,
                                    book word count)
         """
-        content, line_count = self.read_file_and_count_lines(book["File"])
+        content, line_count = self.read_file_and_count_lines(book.file)
         stats = self.get_basic_book_stats(content, line_count)
         book.attach_statistics(stats)
         return book
@@ -127,7 +127,7 @@ class BookParser:
             dict: book statistics (book id, book filepath, book title, book author, book line count, book space count,
                                    book word count, book pattern count)
         """
-        content, line_count = self.read_file_and_count_lines(book["File"])
+        content, line_count = self.read_file_and_count_lines(book.file)
         stats = self.get_basic_book_stats(content, line_count)
         stats.pattern_count = len(re.findall(regex, content))
         book.attach_statistics(stats)

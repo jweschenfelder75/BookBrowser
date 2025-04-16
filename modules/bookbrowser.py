@@ -13,6 +13,8 @@ Display language:   German
 Docent:             Ms Meyer
 """
 
+# TODO: Rework all DocStrings in all files!
+
 
 class BookBrowser:
     def __init__(self):

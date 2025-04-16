@@ -1,4 +1,3 @@
-from typing import Any
 from modules.objects.bookshelf import Bookshelf
 from modules.objects.book import Book
 
@@ -69,30 +68,14 @@ class Menu:
             book_statistics (dict): book statistics
         """
         if book and book.has_statistics:
-            # translated_book_statistics = self.get_statistics_entry_translations(book_statistics)   TODO!
-            # for key, value in translated_book_statistics.items():  TODO!
+            stats = book.get_statistics
             print(f"{'Buch-Id':<20}{book.id}")
-            print(f"{'Datei':<20}{book.id}")
-            print(f"{'Titel':<20}{book.id}")
-            print(f"{'Autor':<20}{book.id}")
-            print(f"{'Anzahl Zeilen':<20}{book.id}")
-            print(f"{'Anzahl Leerzeichen':<20}{book.id}")
-            print(f"{'Anzahl Wörter':<20}{book.id}")
-            if book.get_statistics.has_pattern:
-                print(f"{'Anzahl Pattern':<20}{book.id}")
+            print(f"{'Datei':<20}{book.file}")
+            print(f"{'Titel':<20}{book.title}")
+            print(f"{'Autor':<20}{book.author}")
+            print(f"{'Anzahl Zeilen':<20}{stats.line_count}")
+            print(f"{'Anzahl Leerzeichen':<20}{stats.space_count}")
+            print(f"{'Anzahl Wörter':<20}{stats.word_count}")
+            if stats.has_pattern:
+                print(f"{'Anzahl Pattern':<20}{stats.pattern_count}")
             self.print_separator()
-
-    def get_statistics_entry_translations(self, book_statistics: dict[str, Any], /) -> dict[str, Any]:
-        """
-        Retrieves the German translation for a given book statistics.
-
-        Args:
-            book_statistics (dict): book statistics
-
-        Returns:
-            dict: translated keys of the book statistics dictionary
-        """
-        new_keys = {"Id": "Buch-Id", "File": "Datei", "Title": "Titel", "Author": "Autor", "LineCount": "Anzahl Zeilen",
-                    "SpaceCount": "Anzahl Leerzeichen", "WordCount": "Anzahl Wörter", "MatchCount": "Anzahl Pattern"}
-        translated_book_statistics = {new_keys.get(k, k): v for k, v in book_statistics.items()}
-        return translated_book_statistics
