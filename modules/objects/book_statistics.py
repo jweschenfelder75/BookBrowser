@@ -1,13 +1,12 @@
 class BookStatistics:
-    def __init__(self, stats_id: int, count_lines: int, count_spaces: int,
-                 count_words: int, count_pattern: int, /):
+    def __init__(self, stats_id: int, line_count: int, space_count: int, word_count: int, /,
+                 pattern_count: int = None):
         self.id = stats_id
-        self.count_lines = count_lines
-        self.count_spaces = count_spaces
-        self.count_words = count_words
-        self.count_pattern = count_pattern
+        self.line_count = line_count
+        self.space_count = space_count
+        self.word_count = word_count
+        self.pattern_count = pattern_count
 
-    # TODO: Do I need this?
     @property
-    def get_book_statistics(self) -> "BookStatistics":  # Type hint because it is Python
-        return self
+    def has_pattern(self) -> bool:
+        return self.pattern_count is not None
