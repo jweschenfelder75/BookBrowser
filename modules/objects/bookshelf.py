@@ -16,7 +16,8 @@ class Bookshelf:
 
     @property
     def get_books(self) -> list[Book]:
+        print(self.books)
         return self.books
 
     def attach_book(self, book: Book, /):
-        self.books = book
+        self.books.append(book)
