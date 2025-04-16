@@ -1,13 +1,14 @@
 import os
 from modules.utils import inputvalidator as inpcheck
 from modules.parsers import bookparser
-from modules.views import menu
+from modules.views import Menu
+from modules.objects.bookshelf import Bookshelf
 
 """
 Author:             Jana Weschenfelder
-Version:            0.1
+Version:            0.2
 Description:        Browses a given dictionary for books and which analyzes them.
-                    Project 1 of the Python Advanced course.
+                    Project 2 of the Python Advanced course. OOP.
 Display language:   German
 Docent:             Ms Meyer
 """
@@ -17,7 +18,8 @@ class BookBrowser:
     def __init__(self):
         self.__parser = bookparser.BookParser()
         self.__inpchk = inpcheck.InputValidator()
-        self.__menu = menu.Menu()
+        self.__menu = Menu()
+        self.bookshelf = Bookshelf(0)
 
     def ask_for_regex(self) -> str | None:
         """
@@ -40,8 +42,8 @@ class BookBrowser:
         Args:
             directory (str): directory path which contains books
         """
-        book_list = self.__parser.get_books(directory)
-        self.__menu.print_menu(book_list)
+        self.bookshelf = self.__parser.get_books(directory)
+        self.__menu.print_menu(self.bookshelf)
         inp_all_books = self.__inpchk.validate_yesno_with_exit_input("Möchten Sie alle Bücher analysieren (Ja/Nein/Exit)? ")
         if inp_all_books and inp_all_books in ("e", "exit"):
             return
@@ -49,11 +51,11 @@ class BookBrowser:
             inp_srch_regex = self.ask_for_regex()
             self.__menu.print_statistics_header()
             if inp_srch_regex and inp_srch_regex.isprintable():
-                for book in book_list:
+                for book in self.bookshelf.get_books:
                     book_statistics = self.__parser.get_book_info_with_regex(book, inp_srch_regex)
                     self.__menu.print_statistics_entry(book_statistics)
             else:
-                for book in book_list:
+                for book in self.bookshelf.get_books:
                     book_statistics = self.__parser.get_book_info(book)
                     self.__menu.print_statistics_entry(book_statistics)
         else:
@@ -62,13 +64,13 @@ class BookBrowser:
             if inp_sel_book and inp_sel_book in ("e", "exit"):
                 return
             elif inp_sel_book and inp_sel_book in ("j", "ja"):
-                book_count = len(book_list)
+                book_count = len(self.bookshelf.get_books)
                 inp_spec_book = self.__inpchk.validate_int_with_exit_input(
                     f"Wählen Sie bitte ein Buch aus (1-{book_count}/Exit): ", 1, book_count)
                 if inp_spec_book and inp_spec_book in ("e", "exit"):
                     return
                 elif inp_spec_book.isnumeric() and inp_spec_book not in ("e", "exit"):
-                    book = book_list[int(inp_spec_book) - 1]
+                    book = self.bookshelf.get_books[int(inp_spec_book) - 1]
                     inp_srch_regex = self.ask_for_regex()
                     if inp_srch_regex and inp_srch_regex.isprintable():
                         book_statistics = self.__parser.get_book_info_with_regex(book, inp_srch_regex)
