@@ -11,6 +11,12 @@ class Bookshelf:
         return self
 
     @property
+    def has_books(self) -> bool:
+        return len(self.books) > 0
+
+    @property
     def get_books(self) -> list[Book]:
         return self.books
 
+    def attach_statistics(self, book: Book, /):
+        self.books = book
