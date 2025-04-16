@@ -6,13 +6,6 @@ from modules.objects.bookshelf import Bookshelf
 from modules.objects.book import Book
 from modules.objects.book import BookStatistics
 
-"""
-Program:        BookBrowser
-Version:        0.1
-Author:         Jana Weschenfelder
-Description:    Browses books and analyzes them. This is a procedural and modular program. 
-"""
-
 
 class BookParser:
     def get_files_recursively(self, directory: str, /) -> Generator[str, None, None]:
