@@ -2,12 +2,15 @@ from modules.objects import Book
 
 
 class Bookshelf:
-    def __init__(self, /):
-        self.id = id
+    def __init__(self, shelf_id: int, /):
+        self.id = shelf_id
         self.books: list[Book] = []
 
+    @property
     def get_bookshelf(self) -> "Bookshelf":  # Type hint because it is Python
         return self
 
+    @property
     def get_books(self) -> list[Book]:
         return self.books
+
