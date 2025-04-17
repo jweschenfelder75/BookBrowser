@@ -8,7 +8,10 @@ from modules.objects.book import BookStatistics
 
 
 class BookParser:
-    def get_files_recursively(self, directory: str, /) -> Generator[str, None, None]:
+    def __init__(self, directory: str, /):
+        self.__directory = directory
+
+    def get_files_recursively(self) -> Generator[str, None, None]:
         """
         Walks through a given directory path and fetches all subdirectories and files there.
         Return a list of filepaths of all TXT files on the fly via a generator (iterator).
@@ -20,7 +23,7 @@ class BookParser:
             Generator: yields the file paths of all TXT files on the fly via a generator (iterator)
         """
         try:
-            for root, dirs, files in os.walk(directory):
+            for root, dirs, files in os.walk(self.__directory):
                 for file in files:
                     if file.lower().endswith(".txt"):
                         yield os.path.join(root, file)
@@ -127,7 +130,7 @@ class BookParser:
         return book
 
 
-    def get_books(self, directory: str, /) -> "Bookshelf":
+    def get_books(self) -> "Bookshelf":
         """
         Generates a list of books (a book is a dictionary containing: book id, book filepath, book title, book author)
 
@@ -139,7 +142,7 @@ class BookParser:
         """
         result = Bookshelf(0)
         book_id = 0
-        for found_file in self.get_files_recursively(directory):
+        for found_file in self.get_files_recursively():
             book_id += 1
             book = self.get_file_title_author_from_book(book_id, found_file)
             result.attach_book(book)

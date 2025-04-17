@@ -39,7 +39,8 @@ class Menu:
         """
             Prints a menu for a given book list (with the given book id, book title and book author).
         Args:
-            book_list (list[dict]): book list (with the given book id, book title and book author) to be shown in the menu
+            book_list (list[dict]): book list (with the given book id, book title and book author) to be shown in
+                                    the menu
         """
         self.print_menu_header()
         if book_list:

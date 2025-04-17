@@ -27,4 +27,3 @@ class Book:
 
     def attach_statistics(self, statistics: BookStatistics, /):
         self.statistics = statistics
-
