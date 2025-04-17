@@ -10,14 +10,6 @@ class Book:
         self.statistics = None
 
     @property
-    def get_book(self) -> "Book":  # Type hint because it is Python
-        return self
-
-    @property
-    def get_file(self):
-        return self.file
-
-    @property
     def has_statistics(self) -> bool:
         return self.statistics is not None
 
@@ -25,5 +17,5 @@ class Book:
     def get_statistics(self) -> "BookStatistics":  # Type hint because it is Python
         return self.statistics
 
-    def attach_statistics(self, statistics: BookStatistics, /):
+    def set_statistics(self, statistics: BookStatistics, /):
         self.statistics = statistics

@@ -107,7 +107,7 @@ class BookParser:
         """
         content, line_count = self.read_file_and_count_lines(book.file)
         stats = self.get_basic_book_stats(content, line_count)
-        book.attach_statistics(stats)
+        book.set_statistics(stats)
         return book
 
 
@@ -126,7 +126,7 @@ class BookParser:
         content, line_count = self.read_file_and_count_lines(book.file)
         stats = self.get_basic_book_stats(content, line_count)
         stats.pattern_count = len(re.findall(regex, content))
-        book.attach_statistics(stats)
+        book.set_statistics(stats)
         return book
 
 
@@ -145,5 +145,5 @@ class BookParser:
         for found_file in self.get_files_recursively():
             book_id += 1
             book = self.get_file_title_author_from_book(book_id, found_file)
-            result.attach_book(book)
+            result.append_book(book)
         return result

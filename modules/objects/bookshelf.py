@@ -1,4 +1,4 @@
-from modules.objects import Book
+from modules.objects.book import Book
 
 
 class Bookshelf:
@@ -7,16 +7,8 @@ class Bookshelf:
         self.books: list[Book] = []
 
     @property
-    def get_bookshelf(self) -> "Bookshelf":  # Type hint because it is Python
-        return self
-
-    @property
-    def has_books(self) -> bool:
-        return len(self.books) > 0
-
-    @property
     def get_books(self) -> list[Book]:
         return self.books
 
-    def attach_book(self, book: Book, /):
+    def append_book(self, book: Book, /):
         self.books.append(book)

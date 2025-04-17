@@ -1,7 +1,7 @@
 import os
-from modules.utils import inputvalidator as inpcheck
+from modules.utils.inputvalidator import InputValidator
 from modules.parsers import bookparser
-from modules.views import Menu
+from modules.views.menu import Menu
 from modules.objects.bookshelf import Bookshelf
 
 """
@@ -20,7 +20,7 @@ class BookBrowser:
     def __init__(self, directory: str, /):
         self.__directory = directory
         self.__parser = bookparser.BookParser(self.__directory)
-        self.__inpchk = inpcheck.InputValidator()
+        self.__inpchk = InputValidator()
         self.__bookshelf = Bookshelf(0)  # So far, we have only one
         self.__menu = Menu()
 
