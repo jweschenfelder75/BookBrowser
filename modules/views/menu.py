@@ -39,8 +39,8 @@ class Menu:
         """
             Prints a menu for a given book list (with the given book id, book title and book author).
         Args:
-            bookshelf (Bookshelf):  book list (with the given book id, book title and book author) to be shown in
-                                    the menu
+            bookshelf (Bookshelf): book list (with the given book id, book title and book author) to be shown in
+                                              the menu
         """
         self.print_menu_header()
         if bookshelf:
@@ -63,7 +63,7 @@ class Menu:
 
     def print_statistics_entry(self, book: Book, /):
         """
-        Prints a statistics entry for a given book statistics.
+        Prints a statistics entry for a given book with statistics.
 
         Args:
             book (Book): book with statistics

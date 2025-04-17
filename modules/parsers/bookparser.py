@@ -9,6 +9,9 @@ from modules.objects.book import BookStatistics
 
 class BookParser:
     def __init__(self, directory: str, /):
+        """
+            Constructor of the class.
+        """
         self.__directory = directory
 
     def get_files_recursively(self) -> Generator[str, None, None]:

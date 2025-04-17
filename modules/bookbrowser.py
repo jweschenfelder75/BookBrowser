@@ -21,9 +21,6 @@ class BookBrowser:
 
         Args:
             directory (str): directory containing the books for the BookBrowser
-
-        Returns:
-            object:
         """
         self.__directory = directory
         self.__parser = bookparser.BookParser(self.__directory)
