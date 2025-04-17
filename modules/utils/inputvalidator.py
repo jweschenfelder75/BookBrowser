@@ -1,7 +1,7 @@
 import re
 
 
-class InputValidator():
+class InputValidator:
     def validate_pattern_input(self, text: str, /) -> str | None:
         """
         Asks the user for input using the given prompt text.

@@ -35,16 +35,16 @@ class Menu:
         print(f"{'(E)xit':<8}\tProgramm beenden")
         self.print_separator()
 
-    def print_menu(self, book_list: Bookshelf, /):
+    def print_menu(self, bookshelf: Bookshelf, /):
         """
             Prints a menu for a given book list (with the given book id, book title and book author).
         Args:
-            book_list (list[dict]): book list (with the given book id, book title and book author) to be shown in
+            bookshelf (Bookshelf):  book list (with the given book id, book title and book author) to be shown in
                                     the menu
         """
         self.print_menu_header()
-        if book_list:
-            for book in book_list.get_books:
+        if bookshelf:
+            for book in bookshelf.get_books:
                 book_id = book.id
                 title = book.title
                 author = book.author
@@ -66,7 +66,7 @@ class Menu:
         Prints a statistics entry for a given book statistics.
 
         Args:
-            book_statistics (dict): book statistics
+            book (Book): book with statistics
         """
         if book and book.has_statistics:
             stats = book.get_statistics

@@ -13,11 +13,18 @@ Display language:   German
 Docent:             Ms Meyer
 """
 
-# TODO: Rework all DocStrings in all files!
-
 
 class BookBrowser:
     def __init__(self, directory: str, /):
+        """
+        Constructor of the class.
+
+        Args:
+            directory (str): directory containing the books for the BookBrowser
+
+        Returns:
+            object:
+        """
         self.__directory = directory
         self.__parser = bookparser.BookParser(self.__directory)
         self.__inpchk = InputValidator()
@@ -41,9 +48,6 @@ class BookBrowser:
     def browse_books(self):
         """
         Executes the BookBrowser program that browses a given dictionary for books and which analyzes them.
-
-        Args:
-            directory (str): directory path which contains books
         """
         self.__bookshelf = self.__parser.get_books()
         self.__menu.print_menu(self.__bookshelf)
@@ -88,8 +92,8 @@ class BookBrowser:
         Executes the BookBrowser program that browses a given dictionary for books and which analyzes them.
         Adds the possibility to restart the program.
 
-        Args:
-            directory (str): directory path which contains books
+        Returns:
+            object:
         """
         shall_loop = True
         while shall_loop:
