@@ -6,6 +6,10 @@ from modules.objects.bookshelf import Bookshelf
 from modules.objects.book import Book
 from modules.objects.book import BookStatistics
 
+"""
+Contains methods to walk through a given book directory to parse the content of TXT files inside that directory.
+"""
+
 
 class BookParser:
     def __init__(self, directory: str, /):
@@ -70,7 +74,7 @@ class BookParser:
         content = None
         try:
             with open(filepath, "r", encoding="utf-8") as file:
-                line_count = sum(1 for line in file)
+                line_count = sum(1 for _ in file)
                 file.seek(0)
                 content = file.read()
         except FileNotFoundError:

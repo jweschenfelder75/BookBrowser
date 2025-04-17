@@ -1,6 +1,10 @@
 from modules.objects.bookshelf import Bookshelf
 from modules.objects.book import Book
 
+"""
+Contains methods to show a menu in the console prompt.
+"""
+
 
 class Menu:
     def print_separator(self):

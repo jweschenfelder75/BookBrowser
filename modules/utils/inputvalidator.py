@@ -1,5 +1,9 @@
 import re
 
+"""
+Contains methods for input validations (console prompt).
+"""
+
 
 class InputValidator:
     def validate_pattern_input(self, text: str, /) -> str | None:

@@ -13,6 +13,10 @@ Display language:   German
 Docent:             Ms Meyer
 """
 
+"""
+Contains the main logic for the BookBrowser.
+"""
+
 
 class BookBrowser:
     def __init__(self, directory: str, /):
